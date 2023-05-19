@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Продукты</title>
+    <style>
+        * {
+            margin: 0 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0 auto 30px;
+        }
+
+        ul {
+            list-style-type: decimal;
+            font-size: 22px;
+            font-weight: 800;
+            list-style-position: inside;
+        }
+
+        table {
+            width: 100%;
+            border: 2px solid black;
+            border-collapse: collapse;
+            border-radius: 60px;
+        }
+
+        th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            font-weight: 300;
+        }
+
+        th {
+            font-size: 22px;
+            width: 30%;
+            font-weight: 800;
+            text-align: start;
+            vertical-align: top;
+        }
+
+        td {
+            font-size: 18px;
+        }
+
+        li {
+            padding: 10px 0;
+        }
+
+        .header {
+            background-color: #004bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>Продукты</h1>
+<ul>
+    {% for product in products %}
+        <li>
+            <table>
+                <tr class="header">
+                    <th colspan="2">ID: {{ product.id }}</th>
+                </tr>
+                <tr>
+                    <th>Мерчант:</th>
+                    <td>{{ product.merchant.phone }}</td>
+                </tr>
+                <tr>
+                    <th>Фото продукта:</th>
+                    {% if product.photo == None %}
+                        <td>Нет фотографии</td>
+                    {% else %}
+                        <td><img height="300" width="400" src="{{ product.photo }}" alt=""></td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Название продукта:</th>
+                    <td>{{ product.name }}</td>
+                </tr>
+                <tr>
+                    <th>Категория продукта:</th>
+                    <td>{{ product.category.name }}</td>
+                </tr>
+                <tr>
+                    <th>Тип продукта:</th>
+                    <td>{{ product.category_type.name }}</td>
+                </tr>
+                <tr>
+                    <th>Фирма продукта:</th>
+                    <td>{{ product.company }}</td>
+                </tr>
+                <tr>
+                    <th>Модель продукта:</th>
+                    <td>{{ product.model }}</td>
+                </tr>
+                <tr>
+                    <th>ИКПУ продукта:</th>
+                    <td>{{ product.iclg }}</td>
+                </tr>
+                <tr>
+                    <th>Цвет продукта:</th>
+                    <td>{{ product.color }}</td>
+                </tr>
+                <tr>
+                    <th>Страна производителя:</th>
+                    <td>{{ product.country }}</td>
+                </tr>
+                <tr>
+                    <th>Цена продукта (сум):</th>
+                    <td>{{ product.price }}</td>
+                </tr>
+            </table>
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
